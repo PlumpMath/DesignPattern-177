@@ -26,4 +26,17 @@ public class SingletonLazy {
         return singletonLazy;
     }
 
+
+    //双重校验锁的方式实现
+    public static SingletonLazy getInstanceOther(){
+        if(singletonLazy == null){
+            synchronized (SingletonLazy.class){
+                if(singletonLazy == null){
+                    singletonLazy = new SingletonLazy();
+                }
+            }
+        }
+        return singletonLazy;
+    }
+
 }
